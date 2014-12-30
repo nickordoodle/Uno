@@ -1,0 +1,195 @@
+MILESTONE 4 - EFFICIENY ANAYLSIS
+NICHOLAS SCHERER
+
+Play() Method:
+
+Input Sizes
+
+n = hand.size()
+x = playedCards.size()
+s = totalScoreOfUpcomingPlayers.length
+
+Worst Case Scenario:
+
+The worst case scenario in simple terms will be that the program runs through
+all of the code until eventually at the very end returning a -1 as none
+of the cards will be playable and I would have to "draw".
+
+I will be counting how many iterations of a loop the algorithm runs 
+through by counting the comparisons of each loop
+with respect to condition statements inside of the loop
+to see if it breaks the
+loop or returns the program.
+
+1.The first for loop will run at most n times.
+So f(n) = n because there is never a time the loop breaks on its own,
+it will always run through the whole thing regardless.
+
+2.The second loop is the same idea but it involves input x
+and is used to count the cards.  Therefore, each time the algorithm
+will run through x each and every time since there is no return or break.
+So f(x) = x for this loop.
+
+3.The next set of condition statements will make 3 comparisons, otherwise
+the last else statement is executed.  
+So f(n) = 3 and f(n) = 3 since there are two sets of condition statements.
+
+4.The next loop iterates through s everytime.  Although there is a condition
+inside of the loop, it does not make any difference since no break
+or return statement is located inside the loop.  Therefore, this loop
+runs s times in every algorithm.
+So f(s) = s.
+
+5.The worst case for the next loop will be that none of these conditions
+in the loop will be satisfied and therefore will not return the algorithm.
+So although there are return statements, nothing will happen because
+the conditions will not be satisfied and runs through the whole loop of
+n size.
+
+So f(n) = n.
+
+6.The next statement will execute a loop if the condition is satisfied.
+Since this is worst case, the condition will be satisifed adding a 
+1.  And the loop inside the condition will be executed while never
+reaching a return statement which signifies a card to be played.
+So it will run n times once again and
+f(n) = n.
+
+7.The next loop is the same idea. A return will never be achieved and it
+goes through n times.
+f(n) = n.
+
+8.The last loop has many conditions inside of it but none of them will
+evaluate to be true.  Therefore, no return is achieved. And yet again,
+the loop goes through my players hand n times depending on how many
+cards I have.
+
+f(n) = n.
+
+Finally, the algorithm will return a -1 because the strategy did not
+return a legal card nor did my standard algorithm of playing any
+legal card.
+
+So while adding all of the functions up we obtain:
+
+f(n, x, s) = n + n + n + n + s + 3 + 3 + x + n
+
+After simplifying,
+
+f(n, x, s) = 5n + x + s + 6
+
+For Big Oh Worst Case,
+s will be the same size every time because it is the length of my
+opponents which will always be 3.  But we cannot take it away because
+n can possibly be less than s and vice versa at any moment. We must
+also keep x since it is an independent variable and it can vary in length
+in every game as my algorithm makes it grow with each played card.
+
+However, we can drop the 6 since it is a constant and insignificant and 
+we can also drop the 5 in front of n since as n grows to infinity, 5
+becomes more and more insignificant to the result.
+
+So Big Oh for worst case is: O(n + x + s)
+
+
+Best Scenario:
+
+1. The first loop executes every time for the full length since there
+is no break or return.  The conditions inside the loop affect the program
+but not the loop itself.
+
+f(n) = n
+
+2. The second loop is the same idea but with x.  It goes through x every 
+time to serve as a counting mechanism to keep track of played cards.
+
+f(x) = x
+
+3. The condition statements will always execute and the best scenario
+is the first condition evaluates to true.  So f(n) = 1 and f(n) = 1
+since we have two sets of the condition statements.
+
+4. Again, the next loop iterates s times and the comparison inside of it
+does not affect how many times it iterates through.
+
+f(s) = s
+
+5. This loop, on the other hand, has return statements.  Since this is 
+the best case scenario, we assume the first condition will be true
+and the program will return.  So on the first iterations, the first condition
+is true and the condition inside that condition is true, then it returns
+a number and the program ceases.
+
+So f(n) = 1
+
+And that is the end of the program since it runs to the point where it can
+halt and is the fastest possible way to stop the program.
+
+Adding all of the functions yields:
+
+f(n, x, s) = n + x + 1 + 1 + s + 1
+
+Simplified,
+
+f(n, x, s) = n + x + s + 3
+
+Big Oh notation for best case drops all constants and since n, x, and s are
+independent variables, we should keep them.  Although s can be considered
+a constant number since it will always be the number of my opponents which
+is 3, we cannot drop it since n or x might be less than s at any time.
+
+So we keep all three variables and drop the actual number 3.
+
+So Big Oh for best case is: O(n + x + s)
+
+
+
+
+CallColor() Method:
+
+Best Case Scenario
+
+I will be counting the comparisons of the for loop.  The best case
+will always include the loop iterating fully but after that it will
+either do one more operation and return something or do three more
+operations(condition statements) and return something.
+
+So with the first for loop, since there is no return or break inside the loop
+it will go through the full length of n.
+
+f(n) = n
+
+The condition statements will add a 1 since the first condition would 
+evaluate to true.
+
+so f(n) = 1
+
+And the total is f(n) = n + 1
+
+
+But the condition statements that return a color are not computationally
+expensive operations and therefore are not counted in Big Oh notation.
+
+So the Big Oh notation is: O(n) since it will always run through the one
+loop.
+
+
+The worst case scenario is the same as best case scenario since we are not
+counting the condition statements (if, else if) that return a color.
+Instead, the algorithm checks three conditons and therefore f(n) = 3.
+
+And the beginning loop is the same since it executes every time through
+hand.size() which is n times.
+
+So f(n) = n.
+
+And total f(n) = n + 3
+
+After dropping the constants for Big Oh notation, we obtain:
+
+O(n) for worst case scenario which is the same as best case in this situation.
+
+
+
+
+
